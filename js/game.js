@@ -26,7 +26,6 @@ start (){
     //Hide the start screen
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
-    // this.gameContainer.style.display = "block";
     this.gameSound.play()
     //Create the set interval for the 60 
     this.gameIntervalId = setInterval(()=>{
@@ -133,21 +132,46 @@ update() {
     }
     }
 
-//Adding new obstacles randomly 
-if(this.counter % 120 === 0){
-    const randomLeft = this.width + 200 // Spawn obstacles off screen
-    this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
-}
+// //Adding new obstacles randomly 
+// if(this.counter % 120 === 0){
+//     const randomLeft = this.width + 200 // Spawn obstacles off screen
+//     this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+// }
 
-// Add extra obstacles, if score >= 300 - Lv2
-if(this.score >= 300){
-if(this.counter % 120 === 0){
-    const randomLeft = this.width + 200 // Spawn obstacles off screen
-    this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
-}
-}
-}
+// // Add extra obstacles, if score >= 300 - Lv2
+// if(this.score >= 300){
+// if(this.counter % 200 === 0){
+//     const randomLeft = this.width + 200 // Spawn obstacles off screen
+//     this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+// }
+// }
 
+//Add extra obstacles with increased difficulty - 4 levels in total
+if(this.score >= 1000){
+  if(this.counter % 30 === 0){
+       const randomLeft = this.width + 200 // Spawn obstacles off screen
+       this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+}
+}
+else if(this.score >= 600){
+  if(this.counter % 60 === 0){
+       const randomLeft = this.width + 200 
+       this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+}
+}
+else if(this.score >= 300){
+  if(this.counter % 80 === 0){
+       const randomLeft = this.width + 200
+       this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+}
+}
+else{
+  if(this.counter % 120 === 0){
+       const randomLeft = this.width + 200
+       this.obstacles.push(new Obstacle (this.gameScreen, randomLeft))
+}
+}
+}
 
 
 gameOver() {
